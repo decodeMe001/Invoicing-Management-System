@@ -1,0 +1,222 @@
+@charset "utf-8";
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+/*basic reset*/
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding:0;
+	border:0;
+}
+html,
+body {
+	width:100%;
+	height:100%;
+	background: linear-gradient(rgba(20, 30, 40, 0.5), rgba(20, 30, 40, 0.5)); 
+	font-family: 'Arvo', Courier New, Courier, serif;
+	font-weight: bold;
+	font-variant: normal;
+}
+.login-content {
+	position: relative;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+	top: 50%;
+    padding: 20px 0;
+	font-family: monospace;
+    -moz-transition: all 550ms ease-in-out;
+    -o-transition: all 550ms ease-in-out;
+    -webkit-transition: all 550ms ease-in-out;
+	transition: all 550ms ease-in-out;
+}
+
+.login{
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	width:390px;
+	display: table;
+	background:#fff;
+	box-sizing:border-box;
+	box-shadow:0 15px 25px rgba(0,0,0,.5);
+	border-radius: 10px;
+	
+}
+
+.legend {
+	position: relative;
+	width: 100%;
+	display: block;
+	background: #ff7052;
+	padding: 15px;
+	color: #fff;
+	font-size:20px;
+}
+
+.legend:after {
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	opacity: 0.06;
+}
+.input {
+	position: relative;
+	width:90%;
+	margin: 15px auto;
+}
+.input span{
+	position: absolute;
+	display: block;
+	color: #d4d4d4;
+	left:10px;
+	top:8px;
+	font-size: 20px;
+}
+
+.input input{
+	width: 100%;
+	padding: 10px 5px 10px 40px;
+	display:block;
+	border: 1px solid #EDEDED;
+	border-radius: 4px;
+	transition: 0.2s ease-out;
+	color: #a1a1a1;
+}
+.input input:focus {
+	padding: 10px 5px 10px 10px;
+	outline: 0;
+	border-radius: #FF7052;
+}
+.submit {
+	width: 65px;
+	height: 65px;
+	display: block;
+	margin: 0 auto -15px auto;
+	background: #fff;
+	border-radius: 100%;
+	border: 1px solid #FF7052;
+	color: #FF7052;
+	font-size: 24px;
+	cursor: pointer;
+	box-shadow: 0px 0px 0px 7px #fff;
+	transition: 0.2s ease-out;
+}
+.submit:hover{
+	background: #FF7052;
+	color:#fff;
+	outline: 0;
+}
+.submit:focus{
+	background: #FF7052;
+	color:#fff;
+	outline: 0;
+}
+.danger{
+  color: #e74c3c;
+  font-size: 12px;
+}
+.loading{
+	position: absolute;
+	bottom: -70px;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	background: #2ecc71;
+	padding: 10px 0;
+	font-size: 12px;
+	display: none;
+	opacity: 0;
+}
+.loading:before {
+	bottom: 100%;
+	left:50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(46, 204, 113, 0);
+	border-bottom-color: #2ecc71;
+	border-width:10px;
+	margin-left: -10px;
+}
+/* responsive styling*/
+@media (max-width: 1199px) {
+  .jumbotron h1 {
+    font-size: 56px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+	body h2{
+		font-size: 16px;
+	}
+	.login{
+		width: 360px;
+		margin-top: 25px;
+	}
+  .jumbotron h1 {
+    font-size: 44px;
+  }
+  .jumbotron p {
+    padding: 0 10px;
+  }
+  #services .col-md-3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+	body h2{
+		font-size: 14px; 
+	}
+	.login{
+		width: 290px;
+		margin-top: 25px;
+	}
+
+  .jumbotron h1 {
+    font-size: 24px;
+  }
+  .jumbotron p {
+    font-size: 16px;
+    padding: 0;
+  }
+  .btn-lg {
+    font-size: 18px;
+  }
+  .homepage p {
+    font-size: 18px; 
+  }
+}
+.top-space { margin-top: 60px; }
+/* Footer */
+.footer1 { background: #232323; padding: 30px 0 0 0; font-size: 12px; color: #999; }
+.footer1 a { color: #ccc; }
+.footer1 a:hover {color: #fff; }
+.footer1 .widget { margin-bottom:30px; }		
+.footer1 .widget-title { font-size: 17px; font-weight: bold; color: #ccc; margin: 0 0 20px; }
+.footer1 .entry-meta { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 0 0 35px 0; padding: 2px 0; color: #888888; font-size: 12px; font-size: 0.75rem; }
+.footer1 .entry-meta a { color: #333333; }
+.footer1 .entry-meta .meta-in { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; }
+.follow-me-icons { font-size:30px; }		
+.follow-me-icons i { float:left; margin:0 10px 0 0; }		
+
+.footer2 { background: #191919; padding: 15px 0; color: #777; font-size: 12px; }
+.footer2 a { color: #aaa; }
+.footer2 a:hover { color: #fff; }
+.footer2 p { margin: 0; }
+
+.widget-simplenav { margin-left:-5px; }		
+.widget-simplenav a{ margin:0 5px; }		
+
+  
