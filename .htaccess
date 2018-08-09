@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+
+RewriteBase /imsystems/
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond $1 !^(index\.php|images|css|fonts|js|robots\.txt)
+
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php? [NC,L]
