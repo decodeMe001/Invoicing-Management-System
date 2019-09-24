@@ -23,10 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/imsystems/';
+$config['base_url'] = 'http://localhost/vsystems/';
 
-$config['roles'] = array('user', 'admin');
-$config['status'] = array('approved');
+$config['roles'] = array('admin', 'staff');
 
 /*
 |--------------------------------------------------------------------------
@@ -138,7 +137,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = 'vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -381,10 +380,10 @@ $config['encryption_key'] = 'decodeMe00123456789MNBVCXZ';
 */
 $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
+$config['sess_time_to_update'] = 1000;
 $config['sess_regenerate_destroy'] = FALSE;
 
 
@@ -452,8 +451,8 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'vmachine_db';
-$config['csrf_cookie_name'] = 'vmachine_db';
+$config['csrf_token_name'] = 'invoice_db';
+$config['csrf_cookie_name'] = 'invoice_db';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
