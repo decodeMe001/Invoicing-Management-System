@@ -1,34 +1,14 @@
-<div class="navbar-header">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-	</button>
-	<a class="navbar-brand" style="font-size: 20px; padding-top:10px; font-weight:500; font-family:courier; " href="<?php echo base_url();?>admin/dashboard">Mr. Admin</a>
-</div>
-<!-- /.navbar-header -->
 
-<ul class="nav navbar-top-links navbar-right">
-	<!-- /.dropdown -->
-	<li style="margin-right:100px; padding:0;"></li>
-	
-	<li class="dropdown">
-		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-		</a>
-		<ul class="dropdown-menu dropdown-user">
-			<li><a href="<?php echo base_url();?>admin/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
-			</li>
-			<li><a href="<?php echo base_url();?>admin/settings"><i class="fa fa-gear fa-fw"></i> Settings</a>
-			</li>
-			<li class="divider"></li>
-			<li><a href="<?php echo base_url();?>account/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-			</li>
-		</ul>
-		<!-- /.dropdown-user -->
-	</li>
-	<li></li>
-	<!-- /.dropdown -->
+<!-- Navbar -->
+<ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+  <li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-user fa-fw"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+				<div class="dropdown-divider"></div>
+        <a href="<?php echo base_url();?>account/logout" style="margin-left:5px;text-decoration:none;"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+    </div>
+  </li>
 </ul>
-<!-- /.navbar-top-links -->
