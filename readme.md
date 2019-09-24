@@ -1,12 +1,12 @@
 # Codeigniter Inventory Management App
 
-[![N|Solid](https://nodesource.com/products/nsolid)
+[![N|Solid](https://images.app.goo.gl/QBZNaf1na7wSnAtq8)](https://codeigniter.com)
 
  Inventory Management App is a php-codeigniter inventory management app with functionalities as listed below:
 
   - Administrative role
-  - User/Staff role
-  - Customers Page
+  - User/staff role
+  - Customers page
   - Modal
   - Print page(Excel, Pdf, Xml)
   - Login Authentication
