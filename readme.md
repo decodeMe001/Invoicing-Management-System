@@ -19,6 +19,7 @@
 
 
 ### Setup:
+				-	Run composer install
     - Apache
     - DB (MYSQL) - database present in DB folder
 
