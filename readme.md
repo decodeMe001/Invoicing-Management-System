@@ -24,8 +24,13 @@
     ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/sales.JPG)
 
 ### Setup:
+<<<<<<< HEAD
     - Run composer install
     - Apache server required
+=======
+				-	Run composer install
+    - Apache
+>>>>>>> 7e8705fc6c968b593355e1a2c1b5ed40be5fa482
     - DB (MYSQL) - database present in DB folder
 
 # remote-clone:
