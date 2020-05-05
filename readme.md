@@ -1,4 +1,4 @@
-#Simple Codeigniter Inventory Management App
+# Simple Codeigniter Inventory Management App
 Inventory Management App is a php-codeigniter inventory management app with functionalities as listed below:
 
 ### Pages Snapshot:
@@ -11,7 +11,7 @@ Inventory Management App is a php-codeigniter inventory management app with func
     - Sales page
 ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/sales.JPG)
 
-
+### Pages:
   - Administrative role
   - User/staff role
   - Customers page
