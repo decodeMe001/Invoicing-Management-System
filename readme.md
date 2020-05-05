@@ -1,6 +1,4 @@
-# Codeigniter Inventory Management App
-
-[![N|Solid](https://images.app.goo.gl/QBZNaf1na7wSnAtq8)](https://codeigniter.com)
+#Simple Codeigniter Inventory Management App
 
  Inventory Management App is a php-codeigniter inventory management app with functionalities as listed below:
 
@@ -15,11 +13,19 @@
   # Access Login Information:
 
     - Username: access
-    - Password: (password)
+    - Password: password
 
+### Pages Snapshot:
+    - Login page
+    ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/login.JPG)
+    - Dashboard page
+    ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/dashboard.JPG)
+    - Sales page
+    ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/sales.JPG)
 
 ### Setup:
-    - Apache
+    - Run composer install
+    - Apache server required
     - DB (MYSQL) - database present in DB folder
 
 # remote-clone:
