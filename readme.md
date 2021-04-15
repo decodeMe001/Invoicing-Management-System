@@ -1,31 +1,32 @@
-# Simple Codeigniter Inventory Management App
-Inventory Management App is a php-codeigniter inventory management app with functionalities as listed below:
+# Simple Php Codeigniter Inventory Management System App
+An Inventory Management System App is a php-codeigniter inventory management app with functionalities as listed below:
 
 ### Pages Snapshot:
     - Login page
 ![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/login.JPG)
 
-    - Dashboard page
-![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/dashboard.JPG)
+    - Dashboard chart 
+![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/pics2.PNG)
 
-    - Sales page
-![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/sales.JPG)
+    - Sales Order page
+![Invoicing-Management-System](https://github.com/decodeMe001/Invoicing-Management-System/blob/master/assets/img/pics4.PNG)
 
 ### Pages:
-  - Administrative role
-  - User/staff role
-  - Customers page
-  - Modal
-  - Print page(Excel, Pdf, Xml)
   - Login Authentication
+  - Administrative role [Admin/staff role]
+  - Merchant page
+  - Products
+  - Print page(Excel, Pdf, Xml)
+  - Profile Page
   - Settings
 
   # Access Login Information:
 
+    Sample
     - Username: access
     - Password: password
 
 ### Setup:
-    - Run composer install
-    - Apache
-    - DB (MYSQL) - database present in DB folder
+    - Download and install composer
+    - Apache [Xampp]
+    - DB (MYSQL) - database queries [Database Schema]

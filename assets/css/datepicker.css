@@ -14,6 +14,7 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  z-index: 999999px;
   /*.dow {
     border-top: 1px solid #ddd !important;
   }*/
@@ -29,6 +30,7 @@
   position: absolute;
   top: -7px;
   left: 6px;
+  z-index: 999999px;
 }
 .datepicker:after {
   content: '';
@@ -39,6 +41,7 @@
   position: absolute;
   top: -6px;
   left: 7px;
+  z-index: 999999px;
 }
 .datepicker > div {
   display: none;
@@ -120,6 +123,7 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  
 }
 .datepicker td span:hover {
   background: #eeeeee;

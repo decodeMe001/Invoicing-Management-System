@@ -4,36 +4,31 @@ $single_staff_info = $this->db->get_where('admin', array('admin_id' => $param2))
 foreach ($single_staff_info as $row) {
 ?>
 
-   <form role="form" class="form-horizontal" action="<?php echo base_url(); ?>admin/staff/update/<?=$row['admin_id']; ?>" method="post" enctype="multipart/form-data">
+   <form role="form" class="form-horizontal" action="<?php echo base_url(); ?>admin/profile/update/<?=$row['admin_id']; ?>" method="post" enctype="multipart/form-data">
 		<div class="form-group">
-      <div class="row">
-        <label for="field-1" class="col-md-4 control-label">ID:</label>
-  			<div class="col-md-8">
-  				<b><?=$row['admin_id'];?></b>
-  			</div>
-      </div>
-
+			<div class="row">
+			<label for="field-1" class="col-md-4 control-label">ID:</label>
+				<div class="col-md-8">
+					<b><?=$row['admin_id'];?></b>
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">
-      <div class="row">
-        <label class="control-label col-md-4" for="field-1">Staff-Name</label>
-
-  			<div class="col-md-8">
-  				<input type="text" class="form-control" name="staff_name" id="field-1" required value="<?= $row['name']; ?>"/>
-  			</div>
-      </div>
-
+			<div class="row">
+			<label class="control-label col-md-4" for="field-1">Staff-Name</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="staff_name" id="field-1" required value="<?= $row['name']; ?>"/>
+				</div>
+			</div>
 		</div>
 		<div class="form-group">
-      <div class="row">
-        <label class="control-label col-md-4" for="field-1">Username</label>
-
-  			<div class="col-md-8">
-  				<input type="text" class="form-control" name="staff_username" id="field-1" required value="<?= $row['user_name']; ?>"/>
-  			</div>
-      </div>
-
+			<div class="row">
+				<label class="control-label col-md-4" for="field-1">Username</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="staff_username" id="field-1" required value="<?= $row['user_name']; ?>"/>
+				</div>
+			</div>
 		</div>
 		<div class="form-group">
       <div class="row">

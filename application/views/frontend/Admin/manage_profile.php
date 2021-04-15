@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-md-12" style="margin-top:10px; font-size:16px;">
 		<?php
-                $success_msg = $this->session->flashdata('success_msg');
-                $error_msg  = $this->session->flashdata('error_msg');
+                $success_msg = $this->session->flashdata('profile_success_msg');
+                $error_msg  = $this->session->flashdata('profile_error_msg');
                 if($success_msg){
                     echo $success_msg;
                 }
@@ -18,10 +18,10 @@
 
 
 <div class="container-fluid">
-      <h4 align="center" class="animated slideInDown">BLESSED STAN DIGITAL PHOTO LAB LIMITED</h4><br/>
-					<b>MANAGE STAFF INFO.</b>
+      <h4 align="center" class="animated slideInDown">STRATUMWORLD RESOURCES LIMITED</h4><br/>
+		<b>MANAGE STAFF INFO.</b>
       <br/>
-			<div align="right">
+	  <div align="right">
         <a href="#" class="create-staff btn btn-primary btn-md">CREATE</a>
       </div>
       <br/>
@@ -31,20 +31,19 @@
             <th>Sr No.</th>
             <th>Staff Name</th>
             <th>Email</th>
-						<th>Username</th>
-						<th>Role</th>
+			<th>Username</th>
+			<th>Role</th>
             <th>Show</th>
             <th>Edit</th>
-						<th>Delete</th>
+			<th>Delete</th>
           </tr>
         </thead>
         <?php
-		  $result1 = $this->db->get_where('admin', array('role' => 'staff'))->result_array();
-		  $total_rows = $this->db->count_all('admin');
+		  
 		if($total_rows >= 1)
 		{
 			$no=1;
-			foreach ($result1 as $row) { ?>
+			foreach ($staff as $row) { ?>
 
 			  <tr>
 				<td><?= $no++ ?></td>
@@ -63,15 +62,20 @@
 				</td>
 
 				<td class="text-center">
-					<a  onclick="showAjaxModal('<?= base_url();?>modal/popup/update_staff/<?= $row["admin_id"]?>');"
-					class="edit-staff btn btn-warning btn-sm">
+					<a onclick="showAjaxModal('<?= base_url();?>modal/popup/update_staff/<?= $row["admin_id"]?>');" class="edit-staff btn btn-success btn-sm">
 						<i class="fa fa-edit"></i>
 					</a>
 				</td>
 
-				<td><a href="staff/delete/<?=$row['admin_id'] ?>" class="delete-staff btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></td>
+				<td><a href="profile/delete/<?=$row['admin_id'] ?>" class="delete-staff btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></td>
 			  </tr>
-			<?php } }?>
+			<?php 
+			}
+		}
+		else {
+			echo '<tr><td colspan="8">No Data Entry</td><tr>';
+		}
+        ?>
       </table>
 <br><br>
 <div class="card mb-3 animated slideInUp">
@@ -84,22 +88,20 @@
         ?>
         <?php echo form_open(base_url().'admin/profile/update_profile_info' , array('class' => 'form-horizontal form-groups validate','target'=>'_top'));?>
             <div class="form-group">
-							<div class="row">
-								<label class="col-sm-3 control-label"><?php echo 'Username';?></label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="name" value="<?php echo $row['user_name'];?>"/>
-                </div>
-							</div>
-
+				<div class="row">
+					<label class="col-sm-3 control-label"><?php echo 'Username';?></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" name="name" value="<?php echo $row['user_name'];?>"/>
+					</div>
+				</div>
             </div>
             <div class="form-group">
-							<div class="row">
-								<label class="col-sm-3 control-label"><?php echo 'Access Role';?></label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="role" value="<?php echo $row['role'];?>" readonly/>
-                </div>
-							</div>
-
+				<div class="row">
+					<label class="col-sm-3 control-label"><?php echo 'Access Role';?></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" name="role" value="<?php echo $row['role'];?>" readonly/>
+					</div>
+				</div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-5">
@@ -123,36 +125,34 @@
           ?>
           <?php echo form_open(base_url().'admin/profile/change_password' , array('class' => 'form-horizontal form-groups validate','target'=>'_top'));?>
               <div class="form-group">
-								<div class="row">
-									<label class="col-sm-3 control-label"><?php echo 'Current Password';?></label>
-                  <div class="col-sm-5">
-                      <input type="password" class="form-control" name="password" value=""/>
-                  </div>
-								</div>
-
+					<div class="row">
+						<label class="col-sm-3 control-label"><?php echo 'Current Password';?></label>
+						<div class="col-sm-5">
+						  <input type="password" class="form-control" name="password" value=""/>
+						</div>
+					</div>
               </div>
               <div class="form-group">
-								<div class="row">
-									<label class="col-sm-3 control-label"><?php echo 'New Password';?></label>
-                  <div class="col-sm-5">
-                      <input type="password" class="form-control" name="new_password" value=""/>
-                  </div>
-								</div>
+					<div class="row">
+						<label class="col-sm-3 control-label"><?php echo 'New Password';?></label>
+						<div class="col-sm-5">
+						  <input type="password" class="form-control" name="new_password" value=""/>
+						</div>
+					</div>
               </div>
-              <div class="form-group">
-								<div class="row">
-									<label class="col-sm-3 control-label"><?php echo 'Confirm New Password';?></label>
-                  <div class="col-sm-5">
-                      <input type="password" class="form-control" name="confirm_new_password" value=""/>
-                  </div>
-								</div>
-
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-5">
-                    <button type="submit" class="btn btn-info fa fa-plus"><?php echo ' Update';?></button>
-                </div>
-							</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="col-sm-3 control-label"><?php echo 'Confirm New Password';?></label>
+						<div class="col-sm-5">
+						  <input type="password" class="form-control" name="confirm_new_password" value=""/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-5">
+						<button type="submit" class="btn btn-info fa fa-plus"><?php echo ' Update';?></button>
+					</div>
+				</div>
           <?php echo form_close();?>
 				<?php
         	endforeach;
@@ -160,7 +160,7 @@
     </div>
 </div>
 
-<!-- Modal Form show staff -->
+<!-- Modal Form show profile -->
 <div id="show-staff" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -170,46 +170,42 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-						<div class="card-body">
-						    <div class="form-group">
-									<div class="row">
-										<label class="col-md-4" for="">ID:</label>
-	 								 		<b id="s-id"/>
-									</div>
-						    </div>
-						    <div class="form-group">
-									<div class="row">
-										<label class="col-md-4" for="">Staff-Name:</label>
-	 								 	<b id="s-name"/>
-									</div>
-
-						    </div>
-								<div class="form-group">
-									<div class="row">
-										<label class=" col-md-4" for="">Staff-Username:</label>
-											<b id="s-user"/>
-									</div>
-
-						    </div>
-								<div class="form-group">
-									<div class="row">
-										<label class="col-md-4" for="">Staff-Email:</label>
-											<b id="s-mail"/>
-									</div>
-
-						    </div>
-								<div class="form-group">
-									<div class="row">
-										<label class="col-md-4" for="">Role:</label>
-											<b id="s-role"/>
-									</div>
-
-						    </div>
-
+				<div class="card-body">
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-4" for="">ID:</label>
+								<b id="s-id"/>
 						</div>
-						<div class="modal-footer">
-						Blessed Stan Digital Photo App 2019
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-4" for="">Staff-Name:</label>
+							<b id="s-name"/>
 						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class=" col-md-4" for="">Staff-Username:</label>
+								<b id="s-user"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-4" for="">Staff-Email:</label>
+								<b id="s-mail"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-4" for="">Role:</label>
+								<b id="s-role"/>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+				StratunWorld Resources App, 2021.
+				</div>
          </div>
     </div>
 
@@ -221,64 +217,59 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel"></h4>
-								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
             </div>
             <div class="modal-body">
 
-            <form class="form-horizontal" action="<?php echo base_url();?>admin/staff/create" method="post">
+            <form class="form-horizontal" action="<?php echo base_url();?>admin/profile/create" method="post">
                 <div class="form-group">
-									<div class="row">
-										<label class="control-label col-sm-4"for="title">Name:</label>
-                    <div class="col-sm-8">
-                        <input name="staff_name" id="name" class="form-control" required/>
-                    </div>
-									</div>
-
-                </div>
-
-                <div class="form-group">
-									<div class="row">
-										<label class="control-label col-md-4" for="body">Username :</label>
-                    <div class="col-md-8">
-                        <input name="staff_username" id="username" class="form-control" required/>
-                    </div>
-									</div>
-
-                </div>
-
-								<div class="form-group">
-									<div class="row">
-										<label class="control-label col-md-4" for="body">Email :</label>
-                    <div class="col-md-8">
-                        <input name="staff_email" id="email" class="form-control" required/>
-                    </div>
-									</div>
-
+					<div class="row">
+						<label class="control-label col-sm-4"for="title">Name:</label>
+						<div class="col-sm-8">
+							<input name="staff_name" id="name" class="form-control" required/>
+						</div>
+					</div>
                 </div>
 
                 <div class="form-group">
-									<div class="row">
-										<label class="control-label col-md-4" for="title">Role :</label>
+					<div class="row">
+						<label class="control-label col-md-4" for="body">Username :</label>
                     <div class="col-md-8">
-                        <select name="staff_role" id="role" class="form-control" required>
-                            <option value="staff" selected>staff</option>
-                            <option value="" disabled>admin</option>
-                        </select>
-                    </div>
-									</div>
-
+							<input name="staff_username" id="username" class="form-control" required/>
+						</div>
+					</div>
                 </div>
 
-								<div class="form-group">
-									<div class="row">
-										<label class="control-label col-md-4" for="title">Password :</label>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-4" for="body">Email :</label>
                     <div class="col-md-8">
-                        <input name="password" id="password" class="form-control" required/>
-                    </div>
-									</div>
+							<input name="staff_email" id="email" class="form-control" required/>
+						</div>
+					</div>
+                </div>
 
+                <div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-4" for="title">Role :</label>
+						<div class="col-md-8">
+							<select name="staff_role" id="role" class="form-control" required>
+								<option value="staff" selected>staff</option>
+								<option value="" disabled>admin</option>
+							</select>
+						</div>
+					</div>
+                </div>
+
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-4" for="title">Password :</label>
+						<div class="col-md-8">
+							<input name="password" id="password" class="form-control" required/>
+						</div>
+					</div>
                 </div>
 
                 <div class="form-group">
@@ -294,7 +285,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-				Blessed Stan Digital Photo App 2019
+				StratumWorld Resources App, 2021.
             </div>
         </div>
     </div>
@@ -308,7 +299,7 @@
       var id = $(this).attr("id");
 		  if(confirm("Are you sure you want to remove this?"))
 		  {
-			window.location.href = base_url("admin/staff");
+			window.location.href = base_url("admin/profile");
 		  }
 		  else
 		  {
@@ -323,8 +314,8 @@
             $('#s-name').text($(this).data('staff-name'));
             $('#s-user').text($(this).data('staff-username'));
             $('#s-mail').text($(this).data('staff-mail'));
-						$('#s-role').text($(this).data('role'));
-						// $('#s-password').text($(this).data('password'));
+			$('#s-role').text($(this).data('role'));
+			// $('#s-password').text($(this).data('password'));
             $('.modal-title').text('Staff Data Information');
         });
 
