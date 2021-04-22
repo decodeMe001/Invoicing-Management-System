@@ -1,5 +1,5 @@
-# Simple Php-Codeigniter, Ajax, JQuery Inventory Management System App
-An Inventory Management System App is a Php-codeigniter, Ajax-JQuery inventory management app with functionalities as listed below:
+# Simple Php-Codeigniter, Ajax-JQuery Inventory Management System App (SIMS)
+SIMS is a Php-codeigniter, Ajax-JQuery inventory management system app with functionalities as listed below:
 
 ### Pages Snapshot:
     - Login page
@@ -13,6 +13,7 @@ An Inventory Management System App is a Php-codeigniter, Ajax-JQuery inventory m
 
 ### Pages:
   - Login Authentication
+  - Dashboard Chart Analysis
   - Administrative role [Admin/staff role]
   - Merchant page
   - Products
@@ -20,13 +21,7 @@ An Inventory Management System App is a Php-codeigniter, Ajax-JQuery inventory m
   - Profile Page
   - Settings
 
-  # Access Login Information:
-
-    Sample
-    - Username: access
-    - Password: password
-
 ### Setup:
     - Download and install composer
-    - Apache [Xampp]
-    - DB (MYSQL) - database queries [Database Schema]
+    - Install Xampp [Apache, MySQL]
+    - DB Folder (MYSQL) - database queries [Database Schema]
