@@ -1,5 +1,5 @@
-# Simple Php Codeigniter Inventory Management System App
-An Inventory Management System App is a php-codeigniter inventory management app with functionalities as listed below:
+# Simple Php-Codeigniter, Ajax, JQuery Inventory Management System App
+An Inventory Management System App is a Php-codeigniter, Ajax-JQuery inventory management app with functionalities as listed below:
 
 ### Pages Snapshot:
     - Login page
