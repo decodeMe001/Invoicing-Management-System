@@ -1,6 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 ob_start();
 
+require_once __DIR__ . '\..\..\autoload.php';
+
+// cart-class
+use utility\CartItems;
+
 class Admin extends CI_Controller {
     function __construct() {
         parent::__construct();
@@ -443,6 +448,32 @@ class Admin extends CI_Controller {
 		$data['total_rows'] = $this->db->count_all('admin');
         $this->load->view('frontend/index', $data);
 		
+	}
+	
+	/** POS-invoice printer **/
+	function print_invoice($id=" "){
+		try {
+			$db_items = $this->crud_model->get_cart_items($id);
+			$db_order = $this->crud_model->get_order($id);
+			
+			foreach($db_order as $result){
+				/* Information for the receipt */
+				$subtotal = new CartItems('Total', $result['order_total']);
+				$balance = new CartItems('Balance', $result['balance']);
+				$total = new CartItems('Cash Paid', $result['paid'], true);
+			}
+			
+			$header = new CartItems('Photo Type(Qty)', '#');
+			$tax = new CartItems('A local tax', '0.00');
+			$this->receiptprint->connect();
+			$this->receiptprint->print_test_receipt($header, $db_items, $subtotal, $balance, $tax, $total);
+			$this->session->set_flashdata('success_msg','<div class="alert alert-success text-center">Printed Successfully!!!</div>');
+
+		} catch (Exception $e) {
+			log_message("error", "Error: Could not print. Message ".$e->getMessage());
+			$this->receiptprint->close_after_exception();
+		}
+		redirect(base_url('admin/invoice'), 'refresh');		
 	}
 
     /*****SITE/SYSTEM SETTINGS******** */

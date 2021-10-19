@@ -158,8 +158,8 @@ class Crud_model extends CI_Model {
           'name'  =>  $_POST['staff_name'],
           'user_name'  =>  $_POST['staff_username'],
           'email'  =>  $_POST['staff_email'],
-				  'role'  =>  $_POST['staff_role'],
-				  'password'  =>  sha1($this->input->post('password'))
+		  'role'  =>  $_POST['staff_role'],
+		  'password'  =>  sha1($this->input->post('password'))
         );
         $db = $this->db->insert_string('admin',$get_data);
         $this->db->query($db);
@@ -167,7 +167,7 @@ class Crud_model extends CI_Model {
 
 	function update_staff($id)
 	{
-				$data['name'] 		= $this->input->post('staff_name');
+		$data['name'] 		= $this->input->post('staff_name');
         $data['user_name'] 		= $this->input->post('staff_username');
         $data['email'] 	= $this->input->post('staff_email');
         $data['role']          = $this->input->post('staff_role');
@@ -253,6 +253,15 @@ class Crud_model extends CI_Model {
 
         return $image_url;
     }
+	
+	function get_cart_items($id)
+	{
+        return $this->db->get_where('invoice_order_item', array('order_id' => $id))->result_array();
+	}
+	
+	function get_order($id){
+		return $this->db->get_where('invoice_order', array('order_id' => $id))->result_array();
+	}
 
 	//////system settings//////
     function update_system_settings() {
