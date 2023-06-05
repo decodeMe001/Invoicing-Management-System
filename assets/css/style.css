@@ -60,6 +60,7 @@ button {
 	height: 100%;
 	font-size: 5em;
 }
+
 span{
 	font-size: 5em;
 }
@@ -305,10 +306,7 @@ object, embed {
     transition: all 0.5s ease;
 }
 
-/******* State Properties ********/
-.is-hidden{
-	display:none;
-}
+
 
 .is-invisible{
 	visibility: hidden;

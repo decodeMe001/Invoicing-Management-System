@@ -2,7 +2,7 @@
 	function showAjaxModal(url)
 	{
 		// SHOWING AJAX PRELOADER IMAGE
-		jQuery('#modal_ajax .modal-body').html('<div style="text-align:center;margin-top:200px;"><img src="assets/img/preloader.gif" style="height:25px;" /></div>');
+		jQuery('#modal_ajax .modal-body').html('<div style="text-align:center;margin-top:200px;"><img src="http://localhost:80/vsystems/assets/img/preloader.gif" style="height:25px;" /></div>');
 
 		// LOADING THE AJAX MODAL
 		jQuery('#modal_ajax').modal('show', {backdrop: 'true'});
@@ -27,17 +27,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel"></h4>
-										<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">×</span>
-										</button>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
                 </div>
 
                 <div class="modal-body">
 
                 </div>
-               <div class="modal-footer">
-									Blessed Stan Digital Photo App 2019
-						  </div>
+				<div class="modal-footer">
+					Sales & Inventory App 
+					[<?php date_default_timezone_set("Africa/Lagos"); echo date("d-m-Y h:i:s A");?>]
+				</div>
             </div>
         </div>
     </div>
