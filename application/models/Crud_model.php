@@ -315,11 +315,19 @@ class Crud_model extends CI_Model {
 	function insert_staff($data)
 	{
 		$get_data = array(
+<<<<<<< HEAD
 			'name'  =>  $_POST['staff_name'],
 			'user_name'  =>  $_POST['staff_username'],
 			'email'  =>  $_POST['staff_email'],
 			'role'  =>  $_POST['staff_role'],
 			'password'  =>  sha1($this->input->post('password'))
+=======
+          'name'  =>  $_POST['staff_name'],
+          'user_name'  =>  $_POST['staff_username'],
+          'email'  =>  $_POST['staff_email'],
+		  'role'  =>  $_POST['staff_role'],
+		  'password'  =>  sha1($this->input->post('password'))
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
         );
         $db = $this->db->insert_string('admin',$get_data);
         $this->db->query($db);
@@ -327,7 +335,11 @@ class Crud_model extends CI_Model {
 
 	function update_staff($id)
 	{
+<<<<<<< HEAD
 		$data['name'] = $this->input->post('staff_name');
+=======
+		$data['name'] 		= $this->input->post('staff_name');
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
         $data['user_name'] 		= $this->input->post('staff_username');
         $data['email'] 	= $this->input->post('staff_email');
         $data['role']          = $this->input->post('staff_role');
@@ -351,6 +363,15 @@ class Crud_model extends CI_Model {
 
         return $image_url;
     }
+	
+	function get_cart_items($id)
+	{
+        return $this->db->get_where('invoice_order_item', array('order_id' => $id))->result_array();
+	}
+	
+	function get_order($id){
+		return $this->db->get_where('invoice_order', array('order_id' => $id))->result_array();
+	}
 
 	//////system settings//////
     function update_system_settings() {

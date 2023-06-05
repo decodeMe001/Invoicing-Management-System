@@ -5,14 +5,18 @@ class Account extends CI_Controller {
 	function __construct(){
 		parent::__construct();
         $this->load->database();
+<<<<<<< HEAD
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('crud_model');
+=======
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 		$this->roles = $this->config->item('roles');
 
 	}
 
 	public function index() {
+<<<<<<< HEAD
 		if ($this->session->userdata('admin_login') == 1)
             redirect('admin/dashboard', 'refresh');
 		
@@ -22,6 +26,8 @@ class Account extends CI_Controller {
         else if ($this->session->userdata('staff_login') == 1)
             redirect('staff/dashboard', 'refresh');
 
+=======
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 		$data['page_title'] = 'Login';
         $data['page_name'] = 'login';
         $this->load->view('frontend/login', $data);
@@ -53,18 +59,30 @@ class Account extends CI_Controller {
 			$username = $_POST['user_name'];
 			$password = $_POST['password'];
 
+<<<<<<< HEAD
 			//Validating login
 			$data = $this->validate_login($username, $password);
 
 			if($data){
 				$newdata = array('admin_login'  => '1', 'logged_in' => TRUE, 'staff_login' => '1', 'manager' => '1');
+=======
+			if($this->validate_login($username, $password) && $this->validate_username() && $this->session->userdata('login_type') == 'admin'){
+				$newdata = array('logged_in' => TRUE);
+
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 				$this->session->set_userdata($newdata);
 				$validator['success'] = true;
 				$validator['redirect_url'] = "admin/dashboard";
-			}
-			else {
+		
+			}else if($this->validate_login($username, $password) && $this->validate_username() && $this->session->userdata('login_type') == 'staff'){
+				$newdata = array('logged_in' => TRUE);
+
+				$this->session->set_userdata($newdata);
+				$validator['success'] = true;
+				$validator['redirect_url'] = "staff/dashboard";
+			}else {
 				$validator['success'] = false;
-				$validator['messages'] = 'Incorrect username/password combination';
+				$validator['messages'] = 'Invalid username/password combination';
 			}
 		}
 		else {
@@ -80,7 +98,7 @@ class Account extends CI_Controller {
 
 	public function validate_username()
 	{
-		$username = $this->crud_model->validate_username();
+		$username = $this->user->validate_username();
 
 		if($username === true) {
 			return true;
@@ -93,16 +111,19 @@ class Account extends CI_Controller {
 
 
 	//Validating login from ajax request
-    function validate_login($username = '', $password = '') {
+    public function validate_login($username = '', $password = '') {
         $credential = array('user_name' => $username, 'password' => sha1($password));
 
-        // Checking login credential for admin
+        // Checking login credential for admin in Database
         $query = $this->db->get_where('admin', $credential);
         if ($query->num_rows() > 0) {
             $row = $query->row();
+<<<<<<< HEAD
             $this->session->set_userdata('admin_login', '1');
             $this->session->set_userdata('manager', '1');
 			$this->session->set_userdata('staff_login', '1');
+=======
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
             $this->session->set_userdata('id', $row->admin_id);
             $this->session->set_userdata('username', $row->user_name);
             $this->session->set_userdata('cashier', $row->name);
