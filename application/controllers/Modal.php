@@ -27,7 +27,6 @@ class Modal extends CI_Controller {
 	*/
 	function popup($page_name = '' , $param2 = '' , $param3 = '')
 	{
-<<<<<<< HEAD
 		$account_type   = $this->session->userdata('login_type');
 		if($this->session->userdata('login_type') == 'admin' || $this->session->userdata('login_type') == 'manager'){
 			$account_type = 'admin';
@@ -36,11 +35,6 @@ class Modal extends CI_Controller {
 		}
 		$page_data['param2']		=	$param2;
 		$page_data['param3']		=	$param3;
-=======
-		$account_type           =	$this->session->userdata('login_type');
-		$page_data['param2']	=	$param2;
-		$page_data['param3']	=	$param3;
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 		$this->load->view( 'frontend/'.$account_type.'/'.$page_name.'.php' ,$page_data);
 
 	}

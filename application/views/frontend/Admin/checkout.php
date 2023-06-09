@@ -15,7 +15,7 @@
 	</div>	
 </div>
 <div class="container-fluid" id="container-fluid">
-	<h4 align="center" class="animated fadeInDown">Sales & Inventory App [Checkout]</h4><br/>	 
+	<h4 align="center" class="animated fadeInDown">[Products]</h4><br/>	 
 	
 	<table id="data-table" class="table table-bordered table-striped display animated fadeInUp" style="width:100%;">
         <thead>
@@ -63,7 +63,7 @@
 						<td class="text-center">
 							<button type="button" name="add_cart" class="btn btn-success btn-sm add_cart" data-title="<?=$row["title"]?>" 
 								data-selling_price="<?=$row["selling_price"]?>" data-id="<?=$row["id"]?>" data-profit_margin="<?=$row["selling_price"] - $row["market_price"]?>"
-								data-brand_name="<?=$row["brand_name"]?>" data-qty_left_in_stock="<?=$row["qty_in_stock"]?>" 
+								data-qty_left_in_stock="<?=$row["qty_in_stock"]?>" 
 								<?php if ($row["qty_in_stock"] <= 0){ ?> disabled <?php } ?>
 							/>
 								<i class="fa fa-plus" style="color: #fff;"></i>
@@ -182,7 +182,6 @@
 				return;
 			}else{
 				var title = $(this).data("title");
-				var brand_name = $(this).data("brand_name");
 				var qty_in_stock = $(this).data("qty_left_in_stock");
 				var profit_margin = $(this).data("profit_margin");
 				var price = parseFloat($(this).data("selling_price")) + parseFloat($('#prescription_price' + id).val());
@@ -192,7 +191,7 @@
 				   $.ajax({
 						url:"<?=base_url(); ?>admin/add_to_cart",
 						method:"POST",
-						data:{id:id, title:title, price:price, qty:qty, brand_name:brand_name, qty_in_stock:qty_in_stock, profit_margin:profit_margin*qty},
+						data:{id:id, title:title, price:price, qty:qty, qty_in_stock:qty_in_stock, profit_margin:profit_margin*qty},
 						success:function(data)
 						{
 						 $('#cart_details').html(data);

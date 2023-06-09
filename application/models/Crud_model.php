@@ -172,52 +172,54 @@ class Crud_model extends CI_Model {
     public function insertOrder($data)
     {
 		try {
-		$data1 = array(
-			'order_no'      =>  trim($data["order_no"]),
-			'order_date'    =>  trim($data["order_date"]),
-			'order_total'	   =>  $this->cart->total(),
-			'cashier' => $this->session->userdata("cashier"),
-			'method_by_pos' => trim($data["method_by_pos"]),
-			'method_by_transfer' => trim($data["method_by_transfer"]),
-			'method_by_cash' => trim($data["method_by_cash"]),
-		);
-		$q = $this->db->insert_string('invoice_order', $data1);
-		$this->db->query($q);
-		$order_id = $this->db->insert_id();
-			
-		$total_profit_margin = 0;
-		$cart_items = $this->cart->contents();
-		/* Information for the receipt */
-		$subtotal = new CartItems('Total:', number_format($this->cart->total(), 2, '.', ','));
-		$total = new CartItems('Cash Paid:', number_format($this->cart->total(), 2, '.', ','));
-		$cashier = new CartItems('Cashier:', $this->session->userdata("cashier"));
-		
-		$header = new CartItems('DESCRIPTION[QTY]        PRICE(#)', false);
-		$tax = new CartItems('Tax:', '0.00');
-		$this->receiptprint->connect();
-		$this->receiptprint->print_test_receipt($header, $cart_items, $subtotal, $total, $tax, $cashier);
-
-		foreach($this->cart->contents() as $items)
-		{
-			$data2 = array(
-				'order_id'               =>  $order_id,
-				'item_name'              =>  trim($items["name"]),
-				'order_item_quantity'    =>  trim($items["qty"]),
-				'order_item_price'       =>  trim($items["price"]),
-				'order_item_actual_amount'  =>  trim($items["subtotal"])
+			$total_profit_margin = 0;
+			$data1 = array(
+				'order_no'      =>  trim($data["order_no"]),
+				'order_date'    =>  trim($data["order_date"]),
+				'order_total'	   =>  $this->cart->total(),
+				'cashier' => $this->session->userdata("cashier"),
+				'method_by_pos' => trim($data["method_by_pos"]),
+				'method_by_transfer' => trim($data["method_by_transfer"]),
+				'method_by_cash' => trim($data["method_by_cash"]),
 			);
-			$total_profit_margin += trim($items["options"]["profit_margin"]);
-			$get_product_qty = $this->db->get_where('store_product', array('title' => trim($items["name"]), 'selling_price' => trim($items["price"]), 'qty_in_stock' => (int)$items["options"]['qty_in_stock']))->result_array();
-			foreach($get_product_qty as $item){
-				$qty_left = (int)$item['qty_in_stock'] - (int)$items["qty"];
-				$this->db->where(array('title' => trim($items["name"]), 'brand_name' => trim($item["brand_name"]), 'qty_in_stock' => (int)$item['qty_in_stock']));
-				$this->db->update('store_product', array('qty_in_stock' => $qty_left));
+			
+			$q = $this->db->insert_string('invoice_order', $data1);
+			$this->db->query($q);
+			$order_id = $this->db->insert_id();
+			
+			foreach($this->cart->contents() as $items)
+			{
+				$data2 = array(
+					'order_id'               =>  $order_id,
+					'item_name'              =>  trim($items["name"]),
+					'order_item_quantity'    =>  trim($items["qty"]),
+					'order_item_price'       =>  trim($items["price"]),
+					'order_item_actual_amount'  =>  trim($items["subtotal"])
+				);
+				$total_profit_margin += (int)trim($items["options"]["profit_margin"]);
+				$get_product = $this->db->get_where('store_product', array('id' => (int)trim($items["id"]), 'title' => trim($items["name"]), 'selling_price' => trim($items["price"])))->result_array();
+				foreach($get_product as $item){
+					$qty_left = (int)$item['qty_in_stock'] - (int)trim($items["qty"]);
+					$this->db->where(array('id' => (int)trim($items["id"]), 'title' => trim($items["name"]), 'selling_price' => trim($items["price"])));
+					$this->db->update('store_product', array('qty_in_stock' => $qty_left));
+				}
+				$q2 = $this->db->insert_string('invoice_order_item', $data2);
+				$this->db->query($q2);
 			}
-			$q2 = $this->db->insert_string('invoice_order_item', $data2);
-			$this->db->query($q2);
-		}
-		$this->db->where(array('order_id' => $order_id));
-		$this->db->update('invoice_order', array('profit_margin' => $total_profit_margin));
+			
+			$this->db->where(array('order_id' => $order_id));
+			$this->db->update('invoice_order', array('profit_margin' => $total_profit_margin));
+			
+			/* Information for the receipt */
+			$cart_items = $this->cart->contents();
+			$subtotal = new CartItems('Total:', number_format($this->cart->total(), 2, '.', ','));
+			$total = new CartItems('Cash Paid:', number_format($this->cart->total(), 2, '.', ','));
+			$cashier = new CartItems('Cashier:', $this->session->userdata("cashier"));
+			
+			$header = new CartItems('DESCRIPTION[QTY]        PRICE(#)', false);
+			$tax = new CartItems('Tax:', '0.00');
+			$this->receiptprint->connect();
+			$this->receiptprint->print_test_receipt($header, $cart_items, $subtotal, $total, $tax, $cashier);
 
 		} catch (Exception $e) {
 			log_message("error", "Error: Could not print. Message ".$e->getMessage());
@@ -315,19 +317,11 @@ class Crud_model extends CI_Model {
 	function insert_staff($data)
 	{
 		$get_data = array(
-<<<<<<< HEAD
 			'name'  =>  $_POST['staff_name'],
 			'user_name'  =>  $_POST['staff_username'],
 			'email'  =>  $_POST['staff_email'],
 			'role'  =>  $_POST['staff_role'],
 			'password'  =>  sha1($this->input->post('password'))
-=======
-          'name'  =>  $_POST['staff_name'],
-          'user_name'  =>  $_POST['staff_username'],
-          'email'  =>  $_POST['staff_email'],
-		  'role'  =>  $_POST['staff_role'],
-		  'password'  =>  sha1($this->input->post('password'))
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
         );
         $db = $this->db->insert_string('admin',$get_data);
         $this->db->query($db);
@@ -335,11 +329,7 @@ class Crud_model extends CI_Model {
 
 	function update_staff($id)
 	{
-<<<<<<< HEAD
 		$data['name'] = $this->input->post('staff_name');
-=======
-		$data['name'] 		= $this->input->post('staff_name');
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
         $data['user_name'] 		= $this->input->post('staff_username');
         $data['email'] 	= $this->input->post('staff_email');
         $data['role']          = $this->input->post('staff_role');
@@ -363,15 +353,6 @@ class Crud_model extends CI_Model {
 
         return $image_url;
     }
-	
-	function get_cart_items($id)
-	{
-        return $this->db->get_where('invoice_order_item', array('order_id' => $id))->result_array();
-	}
-	
-	function get_order($id){
-		return $this->db->get_where('invoice_order', array('order_id' => $id))->result_array();
-	}
 
 	//////system settings//////
     function update_system_settings() {

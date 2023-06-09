@@ -77,13 +77,8 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
-<<<<<<< HEAD
 	'password' => '',
 	'database' => 'lizzylovepharmbackup',
-=======
-	'password' => 'LovingOctober13th!',
-	'database' => 'invoice',
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

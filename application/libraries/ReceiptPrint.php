@@ -31,11 +31,7 @@ class ReceiptPrint {
 
 	function connect()
 	{
-<<<<<<< HEAD
 		$this->connector = new WindowsPrintConnector("POS-59");
-=======
-		$this->connector = new WindowsPrintConnector("webpos");
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 		$this->printer = new Printer($this->connector);
 	}
 
@@ -53,7 +49,6 @@ class ReceiptPrint {
 	}
 		$this->connector = null;
 		$this->printer = null;
-<<<<<<< HEAD
 	}
 
 	public function print_test_receipt($header="", $items, $subtotal, $total, $tax="", $cashier="")
@@ -96,61 +91,6 @@ class ReceiptPrint {
 		$this->printer->text("Thanks for your purchase!\n");
 		$this->printer->text("ITEM(S) PURCHASED IN GOOD CONDITION ARE NOT REFUNDABLE.\n");
 		$this->printer->text($cashier);
-=======
-		$this->emc_printer = null;
-	}
-
-	// Calls printer->text and adds new line
-	private function add_line($text = "", $should_wordwrap = true)
-	{
-		$this->printer->text($text."\n");
-	}
-
-
-	public function print_test_receipt($header=" ", $items=" ", $subtotal=" ", $balance=" ", $tax=" ", $total=" ")
-	{
-
-		$this->check_connection();
-		$this->printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-		$this->printer->text("Blessed Stan Photos Ltd.\n");
-		$this->printer->selectPrintMode();
-		$this->printer->text("No. 1 Asika Ilobi Sreet, Orlu, Imo State.\n");
-		$this->printer->feed();
-		/* Title of receipt */
-		$this->printer->setEmphasis(true);
-		$this->printer->text("SALES INVOICE\n");
-		$this->printer->setEmphasis(false);
-
-		/* Items */
-		$this->printer->setJustification(Printer::JUSTIFY_LEFT);
-		$this->printer->setEmphasis(true);
-		$this->add_line($header);
-		$this->printer->setEmphasis(false);
-		
-		/* Looping through Items */
-		foreach ($items as $item) {
-			$this->add_line(new CartItems($item['order_photo_type'].'['.$item['order_photo_size'].']'.'('.$item['order_item_quantity'].')', $item['order_item_price']));
-		}
-		$this->printer->setEmphasis(true);
-		$this->add_line($subtotal);
-		$this->printer->setEmphasis(false);
-		$this->printer->feed();
-
-		/* Tax and total */
-		$this->add_line($tax);
-		$this->add_line($balance);
-		$this->printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-		$this->add_line($total);
-		$this->printer->selectPrintMode();
-
-		/* Footer */
-		$this->printer->feed(2);
-		$this->printer->setJustification(Printer::JUSTIFY_CENTER);
-		$this->printer->text("Thank you for shopping at BlessedStan\n");
-		$this->printer->text("For trading hours, call: +2348037974772\n");
-		$this->printer->text("Email: blessedstaninvestment@yahoo.com\n");
-		$this->printer->feed(2);
->>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
 		$this->printer->text(date('Y-m-d H:i:s')."\n");
 
 		/* Cut the receipt and open the cash drawer */
