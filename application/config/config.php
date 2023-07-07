@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://192.168.1.135:80/vsystems/';
+=======
+$config['base_url'] = 'http://localhost:80/vsystems/';
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 
 $config['roles'] = array('admin', 'staff', 'manager');
 

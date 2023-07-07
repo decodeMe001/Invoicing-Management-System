@@ -32,6 +32,10 @@
             <th width="15%">Profit</th>
 			<th width="15%">Cash Paid</th>
 			<th width="15%">Balance</th>
+<<<<<<< HEAD
+=======
+			<th width="4%">Print</th>
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
             <th width="4%">Show</th>
             <th width="4%">Edit</th>
             <th width="4%">Delete</th>
@@ -51,6 +55,10 @@
 					<td>&#8358;<?=number_format($row["profit"], 2, ".", ",")?></td>
 					<td>&#8358;<?=number_format($row["cash_paid"], 2, ".", ",")?></td>
 					<td>&#8358;<?=number_format($row["total_selling_price"] - $row["cash_paid"], 2, ".", ",")?></td>
+<<<<<<< HEAD
+=======
+					<td class="text-center"><a href="print_invoice/<?=$row["order_id"]?>" class="btn btn-primary btn-sm"><i class="fa fa-book"></i></a></td>
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 					<td class="text-center">
 						<a href="#" class="show_stationary btn btn-info btn-sm" data-id="<?=$row['sales_code']?>" data-date="<?=$row['payment_date']?>">
 							<i class="fa fa-eye"></i>

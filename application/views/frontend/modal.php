@@ -2,7 +2,11 @@
 	function showAjaxModal(url)
 	{
 		// SHOWING AJAX PRELOADER IMAGE
+<<<<<<< HEAD
 		jQuery('#modal_ajax .modal-body').html('<div style="text-align:center;margin-top:200px;"><img src="http://192.168.1.135:80/vsystems/assets/img/preloader.gif" style="height:25px;" /></div>');
+=======
+		jQuery('#modal_ajax .modal-body').html('<div style="text-align:center;margin-top:200px;"><img src="http://localhost:80/vsystems/assets/img/preloader.gif" style="height:25px;" /></div>');
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 
 		// LOADING THE AJAX MODAL
 		jQuery('#modal_ajax').modal('show', {backdrop: 'true'});

@@ -72,6 +72,7 @@ class Crud_model extends CI_Model {
         $this->db->where('id', $id);
 		$this->db->update('store_product', $data);
 	}
+<<<<<<< HEAD
 
 	function delete_product($id)
 	{
@@ -268,6 +269,162 @@ class Crud_model extends CI_Model {
 		$this->db->where(array('order_id' => $order_id));
 		$this->db->update('invoice_order', array('profit_margin' => $total_profit_margin));
 	}
+=======
+
+	function delete_product($id)
+	{
+        $this->db->where('id', $id);
+        $this->db->delete('store_product');
+    }
+
+	/** Manage Customers**/
+	function insert_customer($data)
+	{
+		$get_data = array(
+			'companyName'  =>  $_POST['company'],
+			'address'  =>  $_POST['address'],
+			'city'  =>  $_POST['city'],
+			'phone'  =>  $_POST['phone']
+        );
+        $db = $this->db->insert_string('customers', $get_data);
+        $this->db->query($db);
+	}
+
+	function update_customer($id)
+	{
+		$data['companyName'] = $this->input->post('company');
+        $data['address'] = $this->input->post('address');
+        $data['city'] 	= $this->input->post('city');
+        $data['phone']   = $this->input->post('phone');
+        $this->db->where('customerID', $id);
+		$this->db->update('customers', $data);
+	}
+
+	function delete_customer($id)
+	{
+        $this->db->where('customerID', $id);
+        $this->db->delete('customers');
+    }
+
+	/** Manage Expenses **/
+	function insert_expenses($data)
+	{
+		$get_data = array(
+			'staff'  =>  $_POST['staff'],
+			'category'  =>  $_POST['category'],
+			'details'  =>  $_POST['details'],
+			'amount'  =>  $_POST['amount'],
+			'expense_date'  =>  $_POST['expense_date']
+        );
+        $db = $this->db->insert_string('expenses', $get_data);
+        $this->db->query($db);
+	}
+
+	function update_expenses($id)
+	{
+		$data['staff'] = $this->input->post('staff');
+        $data['category'] = $this->input->post('category');
+        $data['details'] 	= $this->input->post('details');
+        $data['amount']   = $this->input->post('amount');
+        $data['expense_date']   = $this->input->post('expense_date');
+        $this->db->where('id', $id);
+		$this->db->update('expenses', $data);
+	}
+
+	function delete_expenses($id)
+	{
+        $this->db->where('id', $id);
+        $this->db->delete('expenses');
+    }
+
+	/** Manage Expenses **/
+	function insert_suppliers($data)
+	{
+		$get_data = array(
+			'companyName'  =>  $_POST['companyName'],
+			'purchase_amount'  =>  $_POST['purchase_amount'],
+			'balance'  =>  $_POST['balance'],
+			'discount'  =>  $_POST['discount'],
+		);
+        $db = $this->db->insert_string('suppliers', $get_data);
+        $this->db->query($db);
+	}
+
+	function update_suppliers($id)
+	{
+		$data['companyName'] = $this->input->post('companyName');
+        $data['purchase_amount']   = $this->input->post('purchase_amount');
+        $data['balance'] 	= $this->input->post('balance');
+        $data['discount'] 	= $this->input->post('discount');
+        $this->db->where('supplierID', $id);
+		$this->db->update('suppliers', $data);
+	}
+
+	function delete_suppliers($id)
+	{
+        $this->db->where('supplierID', $id);
+        $this->db->delete('suppliers');
+    }
+
+	/** Manage orders **/
+    public function insertOrder($data)
+    {
+		try {
+			$total_profit_margin = 0;
+			$data1 = array(
+				'order_no'      =>  trim($data["order_no"]),
+				'order_date'    =>  trim($data["order_date"]),
+				'order_total'	   =>  $this->cart->total(),
+				'cashier' => $this->session->userdata("cashier"),
+				'method_by_pos' => trim($data["method_by_pos"]),
+				'method_by_transfer' => trim($data["method_by_transfer"]),
+				'method_by_cash' => trim($data["method_by_cash"]),
+			);
+			
+			$q = $this->db->insert_string('invoice_order', $data1);
+			$this->db->query($q);
+			$order_id = $this->db->insert_id();
+			
+			foreach($this->cart->contents() as $items)
+			{
+				$data2 = array(
+					'order_id'               =>  $order_id,
+					'item_name'              =>  trim($items["name"]),
+					'order_item_quantity'    =>  trim($items["qty"]),
+					'order_item_price'       =>  trim($items["price"]),
+					'order_item_actual_amount'  =>  trim($items["subtotal"])
+				);
+				$total_profit_margin += (int)trim($items["options"]["profit_margin"]);
+				$get_product = $this->db->get_where('store_product', array('id' => (int)trim($items["id"]), 'title' => trim($items["name"]), 'selling_price' => trim($items["price"])))->result_array();
+				foreach($get_product as $item){
+					$qty_left = (int)$item['qty_in_stock'] - (int)trim($items["qty"]);
+					$this->db->where(array('id' => (int)trim($items["id"]), 'title' => trim($items["name"]), 'selling_price' => trim($items["price"])));
+					$this->db->update('store_product', array('qty_in_stock' => $qty_left));
+				}
+				$q2 = $this->db->insert_string('invoice_order_item', $data2);
+				$this->db->query($q2);
+			}
+			
+			$this->db->where(array('order_id' => $order_id));
+			$this->db->update('invoice_order', array('profit_margin' => $total_profit_margin));
+			
+			/* Information for the receipt */
+			$cart_items = $this->cart->contents();
+			$subtotal = new CartItems('Total:', number_format($this->cart->total(), 2, '.', ','));
+			$total = new CartItems('Cash Paid:', number_format($this->cart->total(), 2, '.', ','));
+			$cashier = new CartItems('Cashier:', $this->session->userdata("cashier"));
+			
+			$header = new CartItems('DESCRIPTION[QTY]        PRICE(#)', false);
+			$tax = new CartItems('Tax:', '0.00');
+			$this->receiptprint->connect();
+			$this->receiptprint->print_test_receipt($header, $cart_items, $subtotal, $total, $tax, $cashier);
+
+		} catch (Exception $e) {
+			log_message("error", "Error: Could not print. Message ".$e->getMessage());
+			$this->receiptprint->close_after_exception();
+		}
+  }
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 
 
     function update_order($invoice_id="")

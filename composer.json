@@ -13,13 +13,28 @@
 	"require": {
 		"php": ">=5.3.7",
 		"phpoffice/phpspreadsheet": "^1.4",
+<<<<<<< HEAD
 		"mike42/escpos-php": "2.2"
+=======
+<<<<<<< HEAD
+		"mike42/escpos-php": "2.2"
+=======
+		"mike42/escpos-php": "^3.0"
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
+<<<<<<< HEAD
 		"mikey179/vfsstream": "1.1.*",
+=======
+<<<<<<< HEAD
+		"mikey179/vfsstream": "1.1.*",
+=======
+>>>>>>> 060766fe05b38dadf2897b881fab97884399e5e3
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 		"phpunit/phpunit": "4.* || 5.*"
 	}
 }

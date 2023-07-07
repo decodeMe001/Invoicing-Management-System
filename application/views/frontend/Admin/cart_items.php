@@ -4,9 +4,12 @@
 	</div>
 </div>
 <div class="container-fluid animated fadeInUp">
+<<<<<<< HEAD
 	<h4 align="center" style="margin-top:10.5px;color:2ef2ef;">
 		<h4 align="center" class="animated fadeInDown">Sales & Inventory App [Sales]</h4><br/>
 	</h4>
+=======
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 	<div align="right">
 		<a href="daily_staff_sales_record" class="create-staff btn btn-primary btn-md">VIEW STAFF SALES</a>
 	</div>

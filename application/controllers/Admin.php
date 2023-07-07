@@ -350,16 +350,25 @@ class Admin extends CI_Controller {
     function checkout($task = " ", $id = " "){
 		if ($this->session->userdata('admin_login') != 1){
 		  redirect(base_url(), 'refresh');
+<<<<<<< HEAD
 		}
 		if ($this->session->userdata('manager') != 1){
 		  redirect(base_url(), 'refresh');
 		}
 		if ($task == "print_slip"){
+=======
+		}
+		if ($this->session->userdata('manager') != 1){
+		  redirect(base_url(), 'refresh');
+		}
+		if ($task == "create"){
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
 			$this->crud_model->insertOrder($clean);
 			$this->session->set_flashdata('success_msg','<div class="alert alert-success text-center">Transaction Completed Successfully!</div>');	
 		}
 		
+<<<<<<< HEAD
 		if ($task == "no_slip"){
 			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
 			$this->crud_model->insertOrderWithoutSlip($clean);
@@ -367,6 +376,9 @@ class Admin extends CI_Controller {
 		}
 		
 		$data['page_title'] = 'Products Details';
+=======
+		$data['page_title'] = 'Shopping Items';
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 		$data['page_name'] = 'checkout';
 		$data['total_rows'] = $this->db->count_all('store_product');
 		$data['product_data'] = $this->db->get('store_product')->result_array();
@@ -384,7 +396,11 @@ class Admin extends CI_Controller {
 			"name"  => $_POST["title"],
 			"qty"  => $_POST["qty"],
 			"price"  => $_POST["price"],
+<<<<<<< HEAD
 			"options" => array("brand_name" => $_POST["brand_name"], "qty_in_stock" => $_POST["qty_in_stock"], "profit_margin"=>$_POST["profit_margin"])
+=======
+			"options" => array("qty_in_stock" => $_POST["qty_in_stock"], "profit_margin"=>$_POST["profit_margin"])
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 		);
 		$this->cart->insert($data);
 		echo $this->view_cart();
@@ -450,7 +466,11 @@ class Admin extends CI_Controller {
 				</tr>
 			</table>
 			<center>
+<<<<<<< HEAD
 				<input type="submit" id="checkButton" onclick="showPrintDialog(event)" class="btn btn-success btn-lg" value="Proceed to Pay" disabled />
+=======
+				<input type="submit" id="checkButton" class="btn btn-success btn-lg" value="Proceed to Pay" disabled />
+>>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 			</center>
 			<br/><br/><hr/>
 		</div>
