@@ -33,7 +33,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'System Name'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="system_name"
+                        <input type="text" class="form-control" readonly="readonly" name="system_name"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'system_name'))->row()->description; ?>">
                     </div>
                 </div>
@@ -41,7 +41,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'System Title'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="system_title"
+                        <input type="text"  class="form-control" readonly="readonly"  name="system_title"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'system_title'))->row()->description; ?>">
                     </div>
                 </div>
@@ -49,7 +49,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'Address'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="address"
+                        <input type="text" class="form-control" readonly="readonly" name="address"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'address'))->row()->description; ?>">
                     </div>
                 </div>
@@ -57,7 +57,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'Phone'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="phone"
+                        <input type="text" class="form-control" readonly="readonly" name="phone"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'phone'))->row()->description; ?>">
                     </div>
                 </div>
@@ -65,7 +65,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'System Email'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="system_email"
+                        <input type="text" class="form-control" readonly="readonly" name="system_email"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'system_email'))->row()->description; ?>">
                     </div>
                 </div>
@@ -73,7 +73,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'Language'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="language"
+                        <input type="text" class="form-control" readonly="readonly" name="language"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'language'))->row()->description; ?>">
                     </div>
                 </div>
@@ -81,7 +81,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                 <div class="form-group">
                     <label  class="col-sm-3 control-label"><?php echo 'Company'; ?></label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="company"
+                        <input type="text" class="form-control" readonly="readonly" name="company"
                                value="<?php echo $this->db->get_where('settings', array('type' => 'company'))->row()->description; ?>">
                     </div>
                 </div>
@@ -96,10 +96,7 @@ echo form_open(base_url() . 'admin/settings/do_update',
                     </div>
                 </div>-->
 
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-5">
-                        <button type="submit" class="btn btn-success btn-lg"><?php echo 'Save'; ?></button>
-                    </div>
+
                 </div>
 
             </div>

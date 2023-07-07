@@ -91,7 +91,6 @@
 	      <th>Balance</th>
 	      <th>Date Issued</th>
 	      <th>Date/Time Paid</th>
-	      <th>Edit</th>
 	    </tr>
 	  </thead>
 	  	<?php
@@ -108,13 +107,6 @@
 		      <td><?=$row["balance"] ?></td>
 		      <td><?=$row["date_received"] ?></td>
 		      <td><?=$row["date_created"] ?></td>
-
-		      <td class="text-center">
-		        <a  onclick="showAjaxModal('<?= base_url();?>modal/popup/update_debt/<?= $row["id"]?>');"
-		          class="edit-debt btn btn-info btn-sm">
-		              <i class="fa fa-edit"></i>
-		          </a>
-		      </td>
 		    </tr>
 			<?php } }?>
 		</table><br><br>

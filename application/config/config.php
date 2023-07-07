@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Invoicing-Management-System/';
+$config['base_url'] = 'http://192.168.1.135:80/vsystems/';
 
-$config['roles'] = array('admin', 'staff');
+$config['roles'] = array('admin', 'staff', 'manager');
 
 /*
 |--------------------------------------------------------------------------

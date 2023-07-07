@@ -32,7 +32,7 @@
             <th>Total</th>
 			<th>Amount Paid</th>
 			<th>Balance</th>
-            <th>PDF</th>
+            <th>Print</th>
 			<th>Show</th>
           </tr>
         </thead>
@@ -50,7 +50,7 @@
 					<td>'.$row["order_total"].'</td>
 					<td>'.$row["paid"].'</td>
 					<td>'.$row["balance"].'</td>
-					<td class="text-center"><a href="print_pdf/'.$row["order_id"].'">PDF</a></td>
+					<td class="text-center"><a href="print_invoice/'.$row["order_id"].'" class="btn btn-primary btn-sm"><i class="fa fa-book"></i></a></td>
 					<td class="text-center"><a href="#" class="show-invoice btn btn-info btn-sm"
 							data-id ="'.$row['order_no'].'"
                             data-date="'.$row['order_date'].'"

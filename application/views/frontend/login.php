@@ -74,7 +74,6 @@
 	$(document).ready(function(){
 		$('.login').unbind('submit').bind('submit', function (e) {
 			e.preventDefault();
-			
 			var url = '<?php echo base_url(); ?>';
 			var form = $(this);
 			var login = function(){
@@ -84,20 +83,15 @@
 					dataType: 'json',
 					data: form.serialize(),
 					success:function(response){
-						
 						if(response.success == true) {
 							$(".text-danger").remove();
 							$(".form-group").removeClass('has-error').removeClass('has-success');
-							window.location.href = response.redirect_url;	
-							
-						}
-						else {
+							window.location.href = response.redirect_url;
+						}else {
 						 	if(response.messages instanceof Object) {
 								$.each(response.messages, function(index, value) {
 									var element = $("#"+index);
-
-									$(element)
-									.closest('.form-group')
+									$(element).closest('.form-group')
 									.removeClass('has-error')
 									.removeClass('has-success')
 									.addClass(value.length > 0 ? 'has-error' : 'has-success')
@@ -105,9 +99,8 @@
 
 									$(element).after(value);
 									$("#logText").hide();
-								});
-							} 
-							else {						
+								})
+							}else {						
 								$("#messages").html('<div class="alert alert-danger alert-dismissible" role="alert" style="font-size:12px;">'+
 							  '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
 								response.messages+

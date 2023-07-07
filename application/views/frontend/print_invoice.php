@@ -6,8 +6,8 @@ $address = $this->db->get_where('settings', array('type' => 'address'))->row()->
 $phone = $this->db->get_where('settings', array('type' => 'phone'))->row()->description;
 if($result1 > 0)
 {
- require_once 'pdf.php';
- $output = '';
+	require_once 'pdf.php';
+	$output = '';
  
 	foreach ($result1 as $row) 
 	{

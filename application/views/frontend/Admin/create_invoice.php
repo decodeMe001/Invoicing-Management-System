@@ -47,7 +47,7 @@
           </div>
 					<div class="col-md-5">
 						<br/><b>Order Date</b><br/>
-					  <input type="text" name="order_date" id="order_date" data-provide="datepicker" value="<?php $date = new DateTime('today'); $date->modify('-1 day'); echo $date->format("Y-m-d");?>" class="form-control input-sm"/>
+					  <input type="text" name="order_date" id="order_date" data-provide="datepicker" value="<?=date("Y-m-d");?>" class="form-control input-sm"/>
 					  <b>Customer Phone</b>
 					  <select name="phone" id="phone" class="form-control input-sm" required>
 						<option value="" <?php if($customer) { foreach($customer as $value) { ?>>--select--</option>
@@ -66,8 +66,8 @@
 			        <tr>
 			          <th width="6%">Sr No.</th>
 			          <th width="18%">Item Name</th>
-							  <th width="15%">Photo-Size</th>
-							  <th width="15%">Photo-Type</th>
+					  <th width="15%">Photo-Size</th>
+                      <th width="15%">Photo-Type</th>
 			          <th width="8%">Quantity</th>
 			          <th width="12%">Price</th>
 			          <th width="15%">Amount</th>

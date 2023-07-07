@@ -4,22 +4,25 @@ class Account extends CI_Controller {
 	public $roles;
 	function __construct(){
 		parent::__construct();
-        $this->load->helper(array('form', 'url'));
-        $this->load->library(array('session', 'form_validation'));
         $this->load->database();
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
         $this->load->model('crud_model');
-				$this->roles = $this->config->item('roles');
+		$this->roles = $this->config->item('roles');
 
 	}
 
 	public function index() {
 		if ($this->session->userdata('admin_login') == 1)
             redirect('admin/dashboard', 'refresh');
-
-        else if ($this->session->userdata('staff_login') == 1)
+		
+		if ($this->session->userdata('manager') == 1)
             redirect('admin/dashboard', 'refresh');
+			
+        else if ($this->session->userdata('staff_login') == 1)
+            redirect('staff/dashboard', 'refresh');
 
-				$data['page_title'] = 'Login';
+		$data['page_title'] = 'Login';
         $data['page_name'] = 'login';
         $this->load->view('frontend/login', $data);
 	}
@@ -54,10 +57,7 @@ class Account extends CI_Controller {
 			$data = $this->validate_login($username, $password);
 
 			if($data){
-				$newdata = array('admin_login'  => '1',
-								 'logged_in' => TRUE,
-								'staff_login' => '1');
-
+				$newdata = array('admin_login'  => '1', 'logged_in' => TRUE, 'staff_login' => '1', 'manager' => '1');
 				$this->session->set_userdata($newdata);
 				$validator['success'] = true;
 				$validator['redirect_url'] = "admin/dashboard";
@@ -101,9 +101,11 @@ class Account extends CI_Controller {
         if ($query->num_rows() > 0) {
             $row = $query->row();
             $this->session->set_userdata('admin_login', '1');
+            $this->session->set_userdata('manager', '1');
 			$this->session->set_userdata('staff_login', '1');
             $this->session->set_userdata('id', $row->admin_id);
-            $this->session->set_userdata('name', $row->user_name);
+            $this->session->set_userdata('username', $row->user_name);
+            $this->session->set_userdata('cashier', $row->name);
             $this->session->set_userdata('login_type', $row->role);
             return true;
         }

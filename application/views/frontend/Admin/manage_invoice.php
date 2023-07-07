@@ -11,14 +11,16 @@
 </div>
 <div class="row">
 	<div class="col-lg-12">
-		<h2 class="page-header"><?php echo $page_title;?></h2>
+		<h2 class="page-header"><?=$page_title;?></h2>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
 <div class="container-fluid">
       <h4 align="center" class="animated fadeInDown">BLESSED STAN DIGITAL PHOTO LAB LIMITED</h4><br/>
-		<b>CASH INVOICE</b>
-      <br />
+	  <h5>CASH INVOICE</h5>
+	  <div align="right">
+		<h5>Daily Income Entry: <b>&#8358;<?=$sales_record?></b></h5>
+	  </div>
       <div align="right">
         <a href="<?php echo base_url();?>admin/create/" class="btn btn-primary btn-md">CREATE</a>
       </div>
@@ -32,18 +34,16 @@
             <th>Total</th>
 			<th>Amount Paid</th>
 			<th>Balance</th>
-            <th>PDF</th>
+            <th>Print</th>
 			<th>Show</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <?php
-		  $result1 = $this->db->get('invoice_order')->result_array();
-		  $total_rows = $this->db->count_all('invoice_order');
 		if($total_rows > 0)
 		{
-			foreach ($result1 as $row) {
+			foreach ($invoice_data as $row) {
 				echo '
 				  <tr>
 					<td>'.$row["order_no"].'</td>
@@ -52,7 +52,7 @@
 					<td>'.$row["order_total"].'</td>
 					<td>'.$row["paid"].'</td>
 					<td>'.$row["balance"].'</td>
-					<td class="text-center"><a href="print_pdf/'.$row["order_id"].'">PDF</a></td>
+					<td class="text-center"><a href="print_invoice/'.$row["order_id"].'" class="btn btn-primary btn-sm"><i class="fa fa-book"></i></a></td>
 					<td class="text-center"><a href="#" class="show-invoice btn btn-info btn-sm"
 							data-id ="'.$row['order_no'].'"
                             data-date="'.$row['order_date'].'"
@@ -128,6 +128,7 @@
 
 </div>
 <script type="application/javascript">
+
     //Delete Content
 	$(document).on('click', '.delete-invoice', function(){
       var id = $(this).attr("id");
