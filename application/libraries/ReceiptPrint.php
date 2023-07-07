@@ -59,11 +59,7 @@ class ReceiptPrint {
 		$this->printer->feed();
 		$this->printer->selectPrintMode();
 		$this->printer->setJustification(Printer::JUSTIFY_CENTER);
-<<<<<<< HEAD
 		$this->printer->text("135, Alhaji Hassan B/Stop, Beside AP Filling Station, Captain Davies Rd., Isefun, Ayobo, Lagos.\n");
-=======
-		$this->printer->text("135, Alhaji Hassan B/Stop, beside AP Filling Station, Camp. Davies Rd., Isefun, Ayobo, Lagos.\n");
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 		$this->printer->text("TEL: +2348143702571.\n");
 		/* Title of receipt */
 		$this->printer->feed();

@@ -9,21 +9,13 @@
   <li class="nav-item <?php if ($page_name == 'customers') echo 'active'; ?>">
     <a class="nav-link" href="<?php echo base_url(); ?>admin/customers">
       <i class="fa fa-users"></i>
-<<<<<<< HEAD
       <span><?php echo 'Vendor'; ?></span>
-=======
-      <span><?php echo 'Product Suppliers'; ?></span>
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
     </a>
   </li>
   <li class="nav-item <?php if ($page_name == 'suppliers') echo 'active'; ?>">
     <a class="nav-link" href="<?php echo base_url(); ?>admin/suppliers">
       <i class="fa fa-users"></i>
-<<<<<<< HEAD
       <span><?php echo 'Market'; ?></span>
-=======
-      <span><?php echo 'Market Vendor'; ?></span>
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
     </a>
   </li>
   <li class="nav-item <?php if ($page_name == 'expenses') echo 'active'; ?>">

@@ -88,11 +88,7 @@
 ?>
 
 <div class="container-fluid" id="container-fluid">
-<<<<<<< HEAD
 	<form id="invoice_form">
-=======
-	<form method="post" id="invoice_form" action="<?=base_url();?>admin/checkout/create">
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 		<div class="table-responsive">
 			<div class="col-md-12 col-md-12">
 				<h2><b>Shopping Cart</b></h2><br/><hr/>
@@ -192,11 +188,7 @@
 				if(qty != '' && qty > 0)
 				{
 				   $.ajax({
-<<<<<<< HEAD
 						url:"<?=base_url(); ?>staff/add_to_cart",
-=======
-						url:"<?=base_url(); ?>admin/add_to_cart",
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 						method:"POST",
 						data:{id:id, title:title, price:price, qty:qty, brand_name:brand_name, qty_in_stock:qty_in_stock, profit_margin:profit_margin*qty},
 						success:function(data)
@@ -213,22 +205,14 @@
 			}
 		 });
 		
-<<<<<<< HEAD
 		 $('#cart_details').load("<?=base_url(); ?>staff/load_cart");
-=======
-		 $('#cart_details').load("<?=base_url(); ?>admin/load_cart");
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 
 		 $(document).on('click', '.remove_inventory', function(){
 			var id = $(this).attr("id");
 			if(confirm("Are you sure you want to remove this?"))
 			{
 			   $.ajax({
-<<<<<<< HEAD
 					url:"<?=base_url(); ?>staff/remove_from_cart",
-=======
-					url:"<?=base_url(); ?>admin/remove_from_cart",
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 					method:"POST",
 					data:{ id : id },
 					success:function(data)
@@ -247,11 +231,7 @@
 		 $(document).on('click', '#clear_cart', function(){
 			if(confirm("Are you sure you want to clear cart?")){
 				$.ajax({
-<<<<<<< HEAD
 					url:"<?=base_url(); ?>staff/clear_cart",
-=======
-					url:"<?=base_url(); ?>admin/clear_cart",
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 					success:function(data)
 					{
 					alert("Your cart has been cleared...");
@@ -263,11 +243,7 @@
 			}
 		 });
 		
-<<<<<<< HEAD
 		/**$("#invoice_form").submit(function(e){
-=======
-		$("#invoice_form").submit(function(e){
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 			e.preventDefault();
 			$('#checkButton').prop("disabled", true);
 			var form = $(this);
@@ -280,7 +256,6 @@
 					location.reload();
 				}
 			});
-<<<<<<< HEAD
 		 });**/
 		
 		 
@@ -330,8 +305,4 @@
 				}
 			});
 	   }
-=======
-		 });
-	});
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
   </script>

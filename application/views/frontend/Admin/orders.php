@@ -15,11 +15,8 @@
 	</div>
 </div>
 <div class="container-fluid">
-<<<<<<< HEAD
       <h4 align="center" class="animated fadeInDown">Sales & Inventory App [Orders]</h4><br/>
 	  <h5>Manage Order:</h5>
-=======
->>>>>>> 0da628fe696508bd39c21c22e2116dbf7925a3e3
 	  <?php
 		if($this->session->userdata("login_type") != "staff"){
 	  ?>
